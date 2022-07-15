@@ -18,9 +18,15 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 #
-        with:
-          heroku_api_key: ${{secrets.801310e1-eeb5-4d9e-b80a-48b0c905f80c}}
-          heroku_app_name: "workshop--18" #Must be unique in Heroku
-          heroku_email: "yulia2232@gmail.com"
+    env:
+    HEROKU_API_KEY: ${secrets.801310e1-eeb5-4d9e-b80a-48b0c905f80c}
+    run: heroku container:login
+    - name: Build and push
+    env:
+    HEROKU_API_KEY: ${secrets.801310e1-eeb5-4d9e-b80a-48b0c905f80c}
+    run: heroku container:push -a workshop--18 web
+    - name: Release
+    env:
+    HEROKU_API_KEY: ${secrets.801310e1-eeb5-4d9e-b80a-48b0c905f80c}
+    run: heroku container:release -a workshop--18 web
+   
