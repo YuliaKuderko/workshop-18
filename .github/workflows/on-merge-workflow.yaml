@@ -9,14 +9,14 @@ on:
     branches: [master]
 jobs:
   test:
-    runs-on: # [to be filled]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Install Node.js
         run: npm i && npm run test
   build-deploy:
-    runs-on: # [to be filled]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       - uses: akhileshns/heroku-deploy@v3.12.12 #
