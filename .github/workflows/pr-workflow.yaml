@@ -13,5 +13,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Install Node.js
+      - name: Install Node.js 
+        run: npm i
         run: npm run test
